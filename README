@@ -93,18 +93,23 @@ have fun,
 antirez
 
 How to install?
-1. Create workplace:
+1. Make dir for installation:
     mkdir -p /usr/local/hping && cd /usr/local/hping
+
 2. Download and unzip:
     wget https://github.com/antirez/hping/archive/master.zip && unzip master.zip && cd hping-master
-3. Install lib:
+
+3. Install gcc and lib:
     yum install -y libpcap-devel
     yum install -y gcc gcc-c++
     yum install -y tcl tcl-devel
+
 4. Create soft link:
     ln -sf /usr/include/pcap-bpf.h /usr/include/net/bpf.h
+
 5. Make and install:
     ./configure && make strip && make install
+
 6. Test:
     hping3 -v
 
